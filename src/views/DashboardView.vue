@@ -1,5 +1,6 @@
 <script setup>
 import ButtonLogout from '../components/LogoutButton.vue'
+import FotoProfile from '../components/FotoProfile.vue'
 import { useAuthStore } from '../stores/auth.store'
 
 const authStore = useAuthStore()
@@ -18,6 +19,8 @@ const authStore = useAuthStore()
       {{ authStore.user?.lastName }}
     </p>
     <p>Access Token: {{ authStore.accessToken }}</p>
+
+    <FotoProfile />
 
     <router-link to="/"> Kembali ke Landing Page </router-link>
 

@@ -23,3 +23,9 @@ export async function refreshToken() {
 
   return response.data
 }
+
+export async function getFotoProfile() {
+  const response = await api.get('/profile/avatar')
+
+  return response.data
+}

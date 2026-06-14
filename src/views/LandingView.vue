@@ -1,4 +1,5 @@
 <script setup>
+import GoogleLoginButton from '@/components/GoogleLoginButton.vue'
 import { RouterLink } from 'vue-router'
 </script>
 
@@ -11,5 +12,6 @@ import { RouterLink } from 'vue-router'
     <RouterLink to="/login">Login</RouterLink>
     <br />
     <RouterLink to="/register">Register</RouterLink>
+    <GoogleLoginButton />
   </div>
 </template>

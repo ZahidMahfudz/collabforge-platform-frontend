@@ -3,6 +3,7 @@ import LandingView from '../views/LandingView.vue'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import DashboardView from '../views/DashboardView.vue'
+import AuthCallBackView from '@/views/AuthCallBackView.vue'
 import { useAuthStore } from '../stores/auth.store'
 import api from '../api/axios'
 
@@ -36,6 +37,10 @@ const router = createRouter({
       meta: {
         requiresAuth: true,
       },
+    },
+    {
+      path: '/auth/callback',
+      component: AuthCallBackView,
     },
   ],
 })
