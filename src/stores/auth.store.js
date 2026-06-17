@@ -4,6 +4,7 @@ import { ref, computed } from 'vue'
 export const useAuthStore = defineStore('auth', () => {
   const accessToken = ref(null)
   const user = ref(null)
+  const profileCompleted = ref(null)
   const isAuthenticated = computed(() => !!accessToken.value)
 
   function setAccessToken(token) {
@@ -14,9 +15,14 @@ export const useAuthStore = defineStore('auth', () => {
     user.value = userData
   }
 
+  function setProfileCompleted(value) {
+    profileCompleted.value = value
+  }
+
   function logout() {
     accessToken.value = null
     user.value = null
+    profileCompleted.value = false
   }
 
   function mapUserData(userData) {
@@ -30,5 +36,15 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
-  return { accessToken, user, isAuthenticated, setAccessToken, setUser, logout, mapUserData }
+  return {
+    accessToken,
+    user,
+    profileCompleted,
+    isAuthenticated,
+    setAccessToken,
+    setUser,
+    logout,
+    mapUserData,
+    setProfileCompleted,
+  }
 })

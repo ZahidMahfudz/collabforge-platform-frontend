@@ -58,7 +58,9 @@ router.beforeEach(async (to, from, next) => {
   }
 
   if (authStore.accessToken) {
-    return next()
+    if (!authStore.profileCompleted && to.path !== '/complete-profile') {
+      return next('/complete-profile')
+    }
   }
 
   try {

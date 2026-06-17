@@ -11,9 +11,19 @@ onMounted(async () => {
   try {
     const response = await api.post('/auth/refresh')
 
-    authStore.setAccessToken(response.data.data.access_token)
+    const result = response.data.data
 
-    authStore.setUser(authStore.mapUserData(response.data.data))
+    authStore.setAccessToken(result.access_token)
+
+    authStore.setUser(authStore.mapUserData(result))
+
+    authStore.setProfileCompleted(result.profile_completed)
+
+    if (result.profile_completed) {
+      router.replace('/dashboard')
+    } else {
+      router.replace('/complete-profile')
+    }
 
     router.replace('/dashboard')
   } catch (error) {
